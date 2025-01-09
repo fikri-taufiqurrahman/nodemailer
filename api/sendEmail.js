@@ -37,6 +37,12 @@ module.exports = async (req, res) => {
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
     console.error("Error sending email:", error);
+    console.log(
+      process.env.EMAIL_SERVICE,
+      process.env.EMAIL_USER,
+      process.env.EMAIL_PASS
+    );
+
     return res
       .status(500)
       .json({ message: "Internal Server Error", error: error.message });
