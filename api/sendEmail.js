@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     req,
     res,
     cors({
-      origin: "localhost", // Atur asal yang diizinkan
+      origin: "http://localhost:5173", // Atur asal yang diizinkan
       methods: ["POST"], // Metode yang diizinkan
       allowedHeaders: ["Content-Type"],
     })
