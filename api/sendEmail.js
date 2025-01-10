@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
       from, // Menggunakan 'from' dari req.body
       to,
       subject,
-      text: `Kamu dapat email dari: ${from} /n/n ${text}`, // Menambahkan 'from' ke dalam isi email
+      text: `Hai ini dari website portofolio kamu, kamu dapat email dari: ${from}, ${text}`, // Menambahkan 'from' ke dalam isi email
     });
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
