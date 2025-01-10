@@ -29,12 +29,12 @@ module.exports = async (req, res) => {
     return res.status(405).json({ message: "Method not allowed" });
   }
 
-  const { to, subject, text } = req.body;
+  const { from, to, subject, text } = req.body;
 
-  if (!to || !subject || !text) {
+  if (!from || !to || !subject || !text) {
     return res
       .status(400)
-      .json({ message: "Missing required fields: to, subject, text" });
+      .json({ message: "Missing required fields: from, to, subject, text" });
   }
 
   const transporter = nodemailer.createTransport({
@@ -47,10 +47,10 @@ module.exports = async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from, // Menggunakan 'from' dari req.body
       to,
       subject,
-      text,
+      text: `Kamu dapat email dari: ${from} /n/n ${text}`, // Menambahkan 'from' ke dalam isi email
     });
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
