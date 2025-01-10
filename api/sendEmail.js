@@ -19,7 +19,7 @@ module.exports = async (req, res) => {
     req,
     res,
     cors({
-      origin: "http://localhost:5173", // Atur asal yang diizinkan
+      origin: "https://dti-portfolio.my.id", // Atur asal yang diizinkan
       methods: ["POST"], // Metode yang diizinkan
       allowedHeaders: ["Content-Type"],
     })
@@ -50,7 +50,7 @@ module.exports = async (req, res) => {
       from, // Menggunakan 'from' dari req.body
       to,
       subject,
-      text: `Hai ini dari website portofolio kamu, kamu dapat email dari: ${from}, ${text}`, // Menambahkan 'from' ke dalam isi email
+      text: `Hai! ini dari website portofolio kamu, kamu dapat email dari: ${from}, /n /n ${text}`, // Menambahkan 'from' ke dalam isi email
     });
     return res.status(200).json({ message: "Email sent successfully" });
   } catch (error) {
